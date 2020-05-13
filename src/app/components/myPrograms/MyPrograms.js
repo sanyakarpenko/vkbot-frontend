@@ -1,20 +1,7 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 
-export class MyPrograms extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValue: "",
-    };
-    this.inputChangeHandler = this.inputChangeHandler.bind(this);
-  }
-
-  inputChangeHandler(event) {
-    this.setState({
-      inputValue: event.target.value,
-    });
-  }
-
+class MyPrograms extends Component {
   render() {
     return (
       <div>
@@ -68,9 +55,11 @@ export class MyPrograms extends Component {
                     </tr>
                   </tbody>
                 </table>
-                <button type="button" className="btn btn-primary mt-3">
-                  Bind program
-                </button>
+                <Link to="/bind_program">
+                  <button type="button" className="btn btn-primary mt-2">
+                    Bind new program
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -80,4 +69,4 @@ export class MyPrograms extends Component {
   }
 }
 
-export default MyPrograms;
+export default withRouter(MyPrograms);

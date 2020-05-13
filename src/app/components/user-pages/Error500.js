@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-export class Error500 extends Component {
+class Error500 extends Component {
   render() {
     return (
       <div>

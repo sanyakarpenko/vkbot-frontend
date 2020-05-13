@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 
-export class Settings extends Component {
+class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ export class Settings extends Component {
             <div className="card">
               <div className="card-body">
                 <h4 className="card-title">Configurations</h4>
-                <form className="forms-sample">
+                <div className="forms-sample">
                   <Form.Group>
                     <label htmlFor="proxies">Proxies</label>
                     <textarea
@@ -34,8 +34,8 @@ export class Settings extends Component {
                     ></textarea>
                   </Form.Group>
                   <Form.Group>
-                    <label htmlFor="exampleSelectGender">Proxy type</label>
-                    <select className="form-control" id="exampleSelectGender">
+                    <label htmlFor="proxyType">Proxy type</label>
+                    <select className="form-control" id="proxyType">
                       <option>HTTP/HTTPS</option>
                       <option>SOCKS4</option>
                       <option>SOCKS5</option>
@@ -49,7 +49,7 @@ export class Settings extends Component {
                       rows="10"
                     ></textarea>
                   </Form.Group>
-                </form>
+                </div>
               </div>
             </div>
           </div>

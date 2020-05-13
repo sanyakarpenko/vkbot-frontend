@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { ProgressBar } from "react-bootstrap";
 
-export class Tasks extends Component {
+class Tasks extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,9 +65,11 @@ export class Tasks extends Component {
                     </tr>
                   </tbody>
                 </table>
-                <button type="button" className="btn btn-primary mt-3">
-                  Create new task
-                </button>
+                <Link to="/new_task">
+                  <button type="button" className="btn btn-primary mt-2">
+                    Create new task
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -76,4 +79,4 @@ export class Tasks extends Component {
   }
 }
 
-export default Tasks;
+export default withRouter(Tasks);
