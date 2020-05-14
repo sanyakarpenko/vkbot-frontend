@@ -2,7 +2,18 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
+import Api from "../../utils/Api";
+import history from "../../constants/history";
+
 class BindProgram extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: "" };
+
+    this.addProgram = this.addProgram.bind(this);
+    this.inputHandler = this.inputHandler.bind(this);
+  }
+
   render() {
     return (
       <div>
@@ -17,6 +28,7 @@ class BindProgram extends Component {
                       type="text"
                       className="form-control"
                       placeholder="Program name"
+                      name="name"
                     />
                   </Form.Group>
                   <Link to="/my_programs">
@@ -24,11 +36,13 @@ class BindProgram extends Component {
                       Cancel
                     </button>
                   </Link>
-                  <Link to="/new_program">
-                    <button type="button" className="btn btn-success">
-                      Save
-                    </button>
-                  </Link>
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    onClick={this.addProgram}
+                  >
+                    Save
+                  </button>
                 </div>
               </div>
             </div>
@@ -36,6 +50,18 @@ class BindProgram extends Component {
         </div>
       </div>
     );
+  }
+
+  inputHandler(event) {
+    this.setState({
+      ...this.state,
+      [event.target.name]: event.target.value,
+    });
+  }
+
+  async addProgram() {
+    const res = await Api.addProgram({ name: this.state.name });
+    history.push(`/new_program/${res.id}`);
   }
 }
 

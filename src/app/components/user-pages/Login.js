@@ -7,12 +7,14 @@ import Api from "../../utils/Api";
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { api: new Api(), username: "", password: "" };
+    this.state = { user: {} };
+
+    this.signIn = this.signIn.bind(this);
     this.inputHandler = this.inputHandler.bind(this);
   }
 
   render() {
-    const { api, username, password } = this.state;
+    const { username, password } = this.state;
 
     return (
       <div>
@@ -53,14 +55,12 @@ class Login extends Component {
                   <div className="mt-3">
                     <div
                       className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-                      onClick={() => {
-                        api.login({ username, password });
-                      }}
+                      onClick={this.signIn}
                     >
                       SIGN IN
                     </div>
                   </div>
-                  <div className="my-2 d-flex justify-content-between align-items-center">
+                  {/* <div className="my-2 d-flex justify-content-between align-items-center">
                     <div className="form-check">
                       <label className="form-check-label text-muted">
                         <input type="checkbox" className="form-check-input" />
@@ -68,14 +68,14 @@ class Login extends Component {
                         Keep me signed in
                       </label>
                     </div>
-                    {/* <a
+                    <a
                       href="!#"
                       onClick={(event) => event.preventDefault()}
                       className="auth-link text-black"
                     >
                       Forgot password?
-                    </a> */}
-                  </div>
+                    </a>
+                  </div> */}
                   <div className="text-center mt-4 font-weight-light">
                     Don't have an account?{" "}
                     <Link to="/register" className="text-primary">
@@ -93,8 +93,15 @@ class Login extends Component {
 
   inputHandler(event) {
     this.setState({
-      [event.target.name]: event.target.value,
+      user: {
+        ...this.state.user,
+        [event.target.name]: event.target.value,
+      },
     });
+  }
+
+  signIn() {
+    Api.login(this.state.user);
   }
 }
 

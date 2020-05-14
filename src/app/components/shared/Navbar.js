@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { Dropdown } from "react-bootstrap";
 
 import Api from "../../utils/Api";
+import history from "../../constants/history";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = { api: new Api(), userInfo: {} };
+    this.state = { userInfo: {} };
+
+    this.signOut = this.signOut.bind(this);
   }
 
   render() {
@@ -48,7 +51,7 @@ class Navbar extends Component {
                 <Dropdown.Menu className="preview-list navbar-dropdown pb-3">
                   <Dropdown.Item
                     className="dropdown-item preview-item d-flex align-items-center border-0 mt-2"
-                    onClick={(evt) => evt.preventDefault()}
+                    onClick={this.signOut}
                   >
                     Sign Out
                   </Dropdown.Item>
@@ -61,10 +64,14 @@ class Navbar extends Component {
     );
   }
 
-  componentDidMount() {
-    this.state.api.getUserInfo().then((response) => {
-      this.setState({ userInfo: response.data });
-    });
+  async componentDidMount() {
+    const res = await Api.getUserInfo();
+    this.setState({ userInfo: res });
+  }
+
+  signOut() {
+    localStorage.setItem("token", "");
+    history.push("/login");
   }
 }
 

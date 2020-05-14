@@ -11,7 +11,7 @@ import Footer from "../shared/Footer";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { isFullPageLayout: false };
+    this.state = { isFullPageLayout: true };
   }
 
   render() {

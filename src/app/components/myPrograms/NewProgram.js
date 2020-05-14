@@ -2,8 +2,17 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
+import Api from "../../utils/Api";
+
 class NewProgram extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { programId: props.match.params.id, program: {} };
+  }
+
   render() {
+    const { program } = this.state;
+
     return (
       <div>
         <div className="row">
@@ -36,7 +45,7 @@ class NewProgram extends Component {
                       type="text"
                       className="form-control"
                       id="bindingKey"
-                      value="12345"
+                      value={program.bindingKey}
                       readOnly
                     />
                   </div>
@@ -96,6 +105,11 @@ class NewProgram extends Component {
         </div>
       </div>
     );
+  }
+
+  async componentDidMount() {
+    const res = await Api.getProgram(this.state.programId);
+    this.setState({ ...this.state, program: res });
   }
 }
 

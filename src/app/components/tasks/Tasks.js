@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { ProgressBar } from "react-bootstrap";
+
+import Api from "../../utils/Api";
+import Spinner from "../shared/Spinner";
+import ItemTask from "./ItemTask";
 
 class Tasks extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      inputValue: "",
-    };
-    this.inputChangeHandler = this.inputChangeHandler.bind(this);
-  }
+    this.state = { tasks: [], isLoaded: false };
 
-  inputChangeHandler(event) {
-    this.setState({
-      inputValue: event.target.value,
-    });
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   render() {
+    const { isLoaded, tasks } = this.state;
+
+    if (!isLoaded) return <Spinner />;
+
     return (
       <div>
         <div className="row">
@@ -37,32 +37,11 @@ class Tasks extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>vk.com/durov</td>
-                      <td>10</td>
-                      <td>
-                        <label className="badge badge-warning">FRIEND</label>
-                      </td>
-                      <td>
-                        <label className="badge badge-success">ACTIVE</label>
-                      </td>
-                      <td>
-                        <ProgressBar variant="success" now={50} />
-                      </td>
-                      <td>
-                        <div className="btn-group" role="group">
-                          <button type="button" className="btn btn-primary">
-                            <i className="fa fa-play"></i>
-                          </button>
-                          <button type="button" className="btn btn-danger">
-                            <i className="fa fa-stop"></i>
-                          </button>
-                          <button type="button" className="btn btn-info">
-                            <i className="fa fa-trash"></i>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
+                    {tasks.map((task) => (
+                      <tr id={`task${task.id}`} key={task.id}>
+                        <ItemTask task={task} onDelete={this.deleteTask} />
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
                 <Link to="/new_task">
@@ -76,6 +55,20 @@ class Tasks extends Component {
         </div>
       </div>
     );
+  }
+
+  async componentDidMount() {
+    const res = await Api.getTasks();
+    this.setState({ isLoaded: true, tasks: res });
+  }
+
+  deleteTask(taskId) {
+    Api.deleteTask(taskId);
+
+    this.setState({
+      ...this.state,
+      tasks: this.state.tasks.filter((task) => task.id !== taskId),
+    });
   }
 }
 
