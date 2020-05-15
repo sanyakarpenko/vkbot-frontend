@@ -15,16 +15,6 @@ class ItemTask extends Component {
   render() {
     const { onDelete, task } = this.state;
 
-    let taskStatusColor;
-
-    if (task.status === "ACTIVE") {
-      taskStatusColor = "success";
-    } else if (task.status === "STOPPED") {
-      taskStatusColor = "danger";
-    } else if (task.status === "ERROR") {
-      taskStatusColor = "info";
-    }
-
     return (
       <Fragment>
         <td>
@@ -34,12 +24,10 @@ class ItemTask extends Component {
         </td>
         <td>{task.count}</td>
         <td>
-          <label className="badge badge-warning">{task.taskType}</label>
+          <label className="badge badge-primary">{task.taskType}</label>
         </td>
         <td>
-          <label className={`badge badge-${taskStatusColor}`}>
-            {task.status}
-          </label>
+          <label className="badge badge-primary">{task.status}</label>
         </td>
         <td>
           <ProgressBar
@@ -59,14 +47,14 @@ class ItemTask extends Component {
             </button>
             <button
               type="button"
-              className="btn btn-danger"
+              className="btn btn-warning"
               onClick={this.stopTask}
             >
               <i className="fa fa-stop"></i>
             </button>
             <button
               type="button"
-              className="btn btn-info"
+              className="btn btn-danger"
               onClick={() => onDelete(task.id)}
             >
               <i className="fa fa-trash"></i>

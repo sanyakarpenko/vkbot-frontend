@@ -48,7 +48,7 @@ class MyPrograms extends Component {
                   </tbody>
                 </table>
                 <Link to="/bind_program">
-                  <button type="button" className="btn btn-primary mt-2">
+                  <button type="button" className="btn btn-success mt-2">
                     Bind new program
                   </button>
                 </Link>

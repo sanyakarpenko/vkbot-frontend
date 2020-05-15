@@ -28,7 +28,7 @@ class Tasks extends Component {
                 <table className="table ">
                   <thead>
                     <tr>
-                      <th>Url</th>
+                      <th>Name</th>
                       <th>Count</th>
                       <th>Type</th>
                       <th>Status</th>
@@ -45,7 +45,7 @@ class Tasks extends Component {
                   </tbody>
                 </table>
                 <Link to="/new_task">
-                  <button type="button" className="btn btn-primary mt-2">
+                  <button type="button" className="btn btn-success mt-2">
                     Create new task
                   </button>
                 </Link>

@@ -34,7 +34,7 @@ class AddAccounts extends Component {
                   ></textarea>
                 </Form.Group>
                 <Link to="/my_programs">
-                  <button type="button" className="btn btn-primary mr-2">
+                  <button type="button" className="btn btn-danger mr-2">
                     Back
                   </button>
                 </Link>

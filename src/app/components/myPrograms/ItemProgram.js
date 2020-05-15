@@ -18,16 +18,6 @@ class ItemProgram extends Component {
   render() {
     const { onDelete, program } = this.state;
 
-    let programStatusColor;
-
-    if (program.status === "ACTIVE") {
-      programStatusColor = "success";
-    } else if (program.status === "STOPPED") {
-      programStatusColor = "danger";
-    } else if (program.status === "ERROR") {
-      programStatusColor = "info";
-    }
-
     return (
       <Fragment>
         <td>{program.name}</td>
@@ -41,7 +31,7 @@ class ItemProgram extends Component {
           />
         </td>
         <td>
-          <label className={`badge badge-${programStatusColor}`}>
+          <label className="badge badge-primary">
             {program.status}
           </label>
         </td>
@@ -59,21 +49,21 @@ class ItemProgram extends Component {
             </button>
             <button
               type="button"
-              className="btn btn-danger"
+              className="btn btn-warning"
               onClick={this.stopProgram}
             >
               <i className="fa fa-stop"></i>
             </button>
             <button
               type="button"
-              className="btn btn-warning"
+              className="btn btn-info"
               onClick={this.programLogs}
             >
               <i className="fa fa-file-text"></i>
             </button>
             <button
               type="button"
-              className="btn btn-info"
+              className="btn btn-danger"
               onClick={() => onDelete(program.id)}
             >
               <i className="fa fa-trash"></i>
@@ -84,13 +74,13 @@ class ItemProgram extends Component {
           <div className="btn-group" role="group">
             <button
               type="button"
-              className="btn btn-success"
+              className="btn btn-primary"
               onClick={this.addAccounts}
             >
               <i className="fa fa-plus-square"></i>
             </button>
             <Dropdown>
-              <Dropdown.Toggle variant="btn btn-info">
+              <Dropdown.Toggle variant="btn btn-danger">
                 <i className="fa fa-trash"></i>
               </Dropdown.Toggle>
               <Dropdown.Menu>
