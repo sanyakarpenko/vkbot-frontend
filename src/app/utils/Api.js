@@ -1,7 +1,7 @@
 import axios from "axios";
 import history from "../constants/history";
 
-const url = "/api/v1";
+const url = "https://vkbot-noves-api.herokuapp.com/api/v1";
 let token = localStorage.getItem("token");
 
 const generateHeaders = (disableToken) => {

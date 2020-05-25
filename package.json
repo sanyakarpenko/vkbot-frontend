@@ -30,7 +30,6 @@
     "react-sparklines": "^1.7.0",
     "react-table": "^6.10.3"
 	},
-	"proxy": "https://vkbot-noves-api.herokuapp.com/api",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
