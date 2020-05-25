@@ -15,6 +15,8 @@ class BindProgram extends Component {
   }
 
   render() {
+    const { name } = this.state;
+
     return (
       <div>
         <div className="row">
@@ -29,6 +31,8 @@ class BindProgram extends Component {
                       className="form-control"
                       placeholder="Program name"
                       name="name"
+                      value={name}
+                      onChange={this.inputHandler}
                     />
                   </Form.Group>
                   <Link to="/my_programs">

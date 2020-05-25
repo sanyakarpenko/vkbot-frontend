@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { Form, Dropdown } from "react-bootstrap";
 
 import Api from "../../utils/Api";
@@ -20,7 +21,9 @@ class ItemProgram extends Component {
 
     return (
       <Fragment>
-        <td>{program.name}</td>
+        <td>
+          <Link to={`/new_program/${program.id}`}>{program.name}</Link>
+        </td>
         <td>
           <Form.Control
             type="text"
@@ -31,9 +34,7 @@ class ItemProgram extends Component {
           />
         </td>
         <td>
-          <label className="badge badge-primary">
-            {program.status}
-          </label>
+          <label className="badge badge-primary">{program.status}</label>
         </td>
         <td>
           {program.validAccounts} / {program.accountCount}
@@ -113,4 +114,4 @@ class ItemProgram extends Component {
   }
 }
 
-export default ItemProgram;
+export default withRouter(ItemProgram);

@@ -7,7 +7,10 @@ import Api from "../../utils/Api";
 class NewProgram extends Component {
   constructor(props) {
     super(props);
-    this.state = { programId: props.match.params.id, program: {} };
+    this.state = {
+      programId: props.match.params.id,
+      program: { bindingKey: "" },
+    };
   }
 
   render() {
@@ -62,12 +65,15 @@ class NewProgram extends Component {
               <div className="card-body">
                 <h4 className="card-title">Windows 7+</h4>
                 <div className="media">
-                  <button
+                  <a
                     type="button"
-                    className="btn btn-primary btn-icon-text"
+										className="btn btn-primary btn-icon-text"
+										href={`${process.env.PUBLIC_URL}/files/VkBot_windows.rar`}
+										target="_blank"
+										rel="noopener noreferrer"
                   >
                     <i className="fa fa-windows btn-icon-prepend"></i> Download
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

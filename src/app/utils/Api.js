@@ -67,6 +67,20 @@ export default {
 
     return res ? res.data : {};
   },
+  getAccountLogs: async (accountId) => {
+    const res = await axios
+      .get(`${url}/account/${accountId}/logs`, generateHeaders())
+      .catch((error) => handleExceptions(error));
+
+    return res ? res.data : {};
+  },
+  getProgramAccounts: async (programId) => {
+    const res = await axios
+      .get(`${url}/program/${programId}/accounts`, generateHeaders())
+      .catch((error) => handleExceptions(error));
+
+    return res ? res.data : {};
+  },
   saveSettings: (reqData) => {
     axios
       .put(`${url}/settings`, reqData, generateHeaders())
