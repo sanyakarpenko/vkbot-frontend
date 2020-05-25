@@ -14,7 +14,7 @@ const generateHeaders = (disableToken) => {
 };
 
 const handleExceptions = (error) => {
-  if (error.response.status === 403 || error.response.status === 500) {
+  if (!error || !error.response ||  error.response.status === 403 || error.response.status === 500) {
     localStorage.setItem("token", "");
     history.push("/login");
   }
