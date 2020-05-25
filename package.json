@@ -1,7 +1,7 @@
 {
   "name": "star-admin-free-react",
   "version": "0.1.0",
-  "homepage": "https://vkbot-noves-api.herokuapp.com/api",
+  "homepage": "https://vkbot-noves.herokuapp.com",
   "private": true,
   "dependencies": {
     "@mdi/font": "^4.5.95",
@@ -30,7 +30,7 @@
     "react-sparklines": "^1.7.0",
     "react-table": "^6.10.3"
 	},
-	"proxy": "https://vkbot-noves-api.herokuapp.com",
+	"proxy": "https://vkbot-noves-api.herokuapp.com/api",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
