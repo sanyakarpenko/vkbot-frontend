@@ -1,7 +1,7 @@
 {
   "name": "star-admin-free-react",
   "version": "0.1.0",
-  "homepage": "https://vkbot-noves.herokuapp.com",
+  "homepage": "https://vkbot-noves-api.herokuapp.com",
   "private": true,
   "dependencies": {
     "@mdi/font": "^4.5.95",
