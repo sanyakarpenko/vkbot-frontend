@@ -73,7 +73,7 @@ class Settings extends Component {
                     ></textarea>
                   </Form.Group>
                   <Form.Group>
-                    <label htmlFor="rucaptchaKey">Likes</label>
+                    <label htmlFor="rucaptchaKey">Rucaptcha</label>
                     <Form.Control
                       type="text"
                       className="form-control"
